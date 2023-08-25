@@ -31,6 +31,9 @@ const taskStatuses = ["waiting", "in_progress", "done"];
  * @param {number} index
  * @returns {Task}
  */
+
+
+
 const createTask = (index) => ({
   id: `t${index}`,
   name: `Task name ${index + 1}`,
