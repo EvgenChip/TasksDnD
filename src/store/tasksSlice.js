@@ -26,9 +26,7 @@ export const backUpdateTasks = createAsyncThunk(
   "tasks/backUpdateTasks",
   async (task, { rejectWithValue, dispatch }) => {
     try {
-      console.log("back", task);
       dispatch(updateTasks(task));
-
       const response = await api.update(task.dropItem);
       console.log(response);
     } catch (error) {}

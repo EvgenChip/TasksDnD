@@ -9,10 +9,8 @@ export const Column = ({ type, title, tasks }) => {
   const [{ isOver }, dropRef] = useDrop({
     accept: "task",
     drop: (dropItem) => {
-      console.log("drop", dropItem);
       dispatch(backUpdateTasks({ dropItem, type }));
     },
-
     collect: (monitor) => ({
       isOver: !monitor.isOver(),
     }),

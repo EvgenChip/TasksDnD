@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "homepage": "https://evgenchip.github.io/TasksDnD/",
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
     "@babel/preset-react": "^7.22.5",
@@ -16,6 +17,7 @@
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
+    "gh-pages": "^6.0.0",
     "react": "^18.2.0",
     "react-dnd": "16.0.1",
     "react-dnd-html5-backend": "16.0.1",
@@ -24,6 +26,8 @@
     "styled-components": "^6.0.7"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "webpack",
     "serve": "webpack-dev-server --config webpack.config.js"
   },

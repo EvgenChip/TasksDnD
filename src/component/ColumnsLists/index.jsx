@@ -3,14 +3,13 @@ import { Column } from "../Column";
 import { useColumnsList } from "./hooks/useColumnList";
 
 export const ColumnsList = () => {
+
   const { dispatch, resStatus, resError, dataTasks } = useColumnsList();
-  console.log(dataTasks);
 
   return (
     <div>
       {resStatus === "Loading" && <h2>Loading...</h2>}
       {resError && <h2>Error: {error}</h2>}
-
       {dataTasks.in_progress ? (
         <SColumns>
           <SContainer>
