@@ -11,7 +11,7 @@ export const SColumn = styled.div`
   margin-right: 20px;
   height: 300px;
 `;
-export const SColumnHeader = styled.div`
+export const SColumnHeader = styled.h1`
   font-size: 19px;
   padding: 5px;
   display: flex;

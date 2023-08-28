@@ -2,33 +2,32 @@ import { SColumns, SContainer } from "./styles";
 import { Column } from "../Column";
 import { useColumnsList } from "./hooks/useColumnList";
 
-export const ColumnsList = () => {
 
-  const { dispatch, resStatus, resError, dataTasks } = useColumnsList();
+export const ColumnsList = () => {
+  const { resStatus, resError, columns } = useColumnsList();
+
+  if (resError) {
+    return <h2>Error: {error}</h2>;
+  }
+
+  if (resStatus === "Loading" || !columns[0]) {
+    return <h2>Loading...</h2>;
+  }
 
   return (
     <div>
-      {resStatus === "Loading" && <h2>Loading...</h2>}
-      {resError && <h2>Error: {error}</h2>}
-      {dataTasks.in_progress ? (
-        <SColumns>
-          <SContainer>
+      <SColumns>
+        <SContainer>
+          {columns.map((column) => (
             <Column
-              type={"waiting"}
-              title={"Waiting"}
-              tasks={dataTasks.waiting}
+              key={column.type}
+              type={column.type}
+              title={column.title.toUpperCase()}
+              tasks={column.tasks}
             />
-            <Column
-              type={"in_progress"}
-              title={"InProgress"}
-              tasks={dataTasks.in_progress}
-            />
-            <Column type={"done"} title={"Done"} tasks={dataTasks.done} />
-          </SContainer>
-        </SColumns>
-      ) : (
-        "Loading"
-      )}
+          ))}
+        </SContainer>
+      </SColumns>
     </div>
   );
 };

@@ -10,7 +10,6 @@ export function App() {
   return (
     <div>
       <Provider store={store}>
-        {" "}
         <DndProvider backend={HTML5Backend}>
           <ColumnsList />
         </DndProvider>

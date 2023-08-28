@@ -5,11 +5,9 @@ export const fetchTasks = createAsyncThunk(
   "tasks/fetchTasks",
   async (_, { rejectWithValue }) => {
     try {
-      const dataTasks = (await api.read()).tasks;
-      if (!dataTasks) {
-        throw new Error("Server Error");
-      }
-      return dataTasks.reduce(
+      const { tasks } = await api.read();
+
+      return tasks.reduce(
         (acc, item) => ({
           ...acc,
           [item.status]: [...(acc[item.status] || []), item],
@@ -29,7 +27,9 @@ export const backUpdateTasks = createAsyncThunk(
       dispatch(updateTasks(task));
       const response = await api.update(task.dropItem);
       console.log(response);
-    } catch (error) {}
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
 );
 

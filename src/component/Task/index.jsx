@@ -10,9 +10,5 @@ export const Task = ({ task }) => {
     }),
   });
 
-  return (
-    <STask ref={dragRef} key={task.id}>
-      {task.name}
-    </STask>
-  );
+  return <STask ref={dragRef}>{task.name}</STask>;
 };
